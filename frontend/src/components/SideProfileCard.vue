@@ -44,7 +44,6 @@ export default {
         { id: 4, name: '공포행성', img: "fear.png", color: '#ED5A8E' },
         { id: 5, name: '깜짝행성', img: "surprised.png", color: '#FEA95C' },
         { id: 6, name: '분노행성', img: "rage.png", color: '#FB5D38' },
-        { id: 7, name: '떠돌이행성', img: "spaceship.png", color: '#FCBB74' },
       ],
       isActive: false
     }

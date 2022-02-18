@@ -167,7 +167,7 @@ export default {
       }).then((res) => {
           console.log("피드 작성 : " + res)
           this.$store.dispatch('accessTokenRefresh', res) // store아닌곳에서
-          // this.$router.go(0)
+          this.$router.go(0)
       }).catch((error) => {
         console.log(error);
       }).then(() => {

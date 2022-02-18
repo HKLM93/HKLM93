@@ -48,13 +48,14 @@ export default {
 	justify-content: center;
 	background-color: white;
 	border-radius: 20px;
-	width: 20vw;
-	height: 15vh;
+	width: 20rem;
+	height: 13rem;
 }
 p {
 	margin: auto;
 	font-weight: bold;
 	cursor: pointer;
+	font-size: 1.3rem;
 }
 hr {
 	margin: 0;
@@ -62,5 +63,6 @@ hr {
 h4 {
 	margin: auto;
 	text-align: center;
+	font-weight: bold;
 }
 </style>
