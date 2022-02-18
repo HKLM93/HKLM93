@@ -88,7 +88,6 @@ export default {
         { id: 4, name: '공포행성', img: "fear.png", color: '#ED5A8E' },
         { id: 5, name: '깜짝행성', img: "surprised.png", color: '#FEA95C' },
         { id: 6, name: '분노행성', img: "rage.png", color: '#FB5D38' },
-        { id: 7, name: '떠돌이행성', img: "spaceship.png", color: '#FCBB74' }
       ],
       commentKey: 0,
       styleName: null,
@@ -96,10 +95,8 @@ export default {
   },
   computed: {
     tmp: function () {
-      let name = this.styleName
-      console.log(name)
-      let style = this.planetStyles.find(el => el.name === name) || {}
-      console.log('이것은 스타일', style)
+      const idx = this.feed.tags[0].no
+      const style = this.planetStyles.find(el => el.id === idx) || {}
       return style
     }
   },
