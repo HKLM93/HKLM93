@@ -2,7 +2,7 @@
   <section id="mypage-container" v-if="userInfo">
     <side-profile-card :user-info="userInfo" />
     <article id="profile-container">
-      <img id="profile-img"  :src="userInfo.profileImg">
+      <img id="profile-img"  :src="$store.state.userInfo.profileImg">
       <div id="profile-card">
         <div id="name-card">
           <h1>{{ userInfo.nickname }}</h1>
@@ -204,7 +204,7 @@ export default {
       })
       .then(() => this.getFeedData())
       .catch(err => console.log(err))
-      .finally(() => this.$store.commit('load', false))
+      .finally(() => {this.$store.commit('load', false)})
     }
   },
   mounted(){

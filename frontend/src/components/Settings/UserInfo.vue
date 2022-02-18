@@ -219,6 +219,12 @@ export default {
         }
       }
 
+      else {
+        this.$store.dispatch('updateuser', null)
+        this.$router.go(-1)
+      }
+
+
       if (nicknameChange && pwChange){
         this.$store.state.userInfo.nickname = this.credentials.beforeNick
         this.$store.dispatch('updateuser', this.credentials.pwConf)
@@ -230,7 +236,7 @@ export default {
         this.$store.state.userInfo.nickname = this.credentials.beforeNick
         this.$store.dispatch('updateuser', null)
         .then(() => {
-          this.$store.commit('pwchangeConfirmModalActivate')
+          this.$router.push({path: '/main'})
         })
       }
       else if (pwChange){
@@ -239,6 +245,7 @@ export default {
           this.$store.commit('pwchangeConfirmModalActivate')
         })
       }
+      this.$store.dispatch('updateuser', null)
     },
     pw_change() {
       if (this.pwActivate === false) {

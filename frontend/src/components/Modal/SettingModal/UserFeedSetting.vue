@@ -43,8 +43,7 @@ export default {
 				}).then((res) => {
 
 				this.$store.dispatch('accessTokenRefresh', res) // store아닌곳에서
-				this.dispatch('accessTokenRefresh', res) // store에서
-				this.$router.push({name: 'Main'})
+				this.$router.push({ path: `/user/${this.feedAuthor}`})
 
 				}).catch((error) => {
 					console.log(error);
@@ -56,7 +55,7 @@ export default {
 	},
 	computed: {
 		...mapState([
-			'feedDetailNum'
+			'feedDetailNum', 'feedAuthor'
 		])
 	},
 	created () {

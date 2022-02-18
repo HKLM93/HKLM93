@@ -95,7 +95,7 @@ export default {
     justify-content: center;
     align-items: flex-end;
     width: 100%;
-    height: 25vh;
+    height: 50%;
     background-image: url('../assets/images/emotions/cover_s.png');
     background-repeat: no-repeat;
     background-position: center;

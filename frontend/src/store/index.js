@@ -34,7 +34,7 @@ export default new Vuex.Store({
     type:0, // 음악:0 영화:1 활동:2
     //내가 선택한 아이템
     item:null,
-
+    feedAuthor: null,
     // 내정보
     userInfo: null,
     userFollowInfo : {
@@ -231,8 +231,11 @@ export default new Vuex.Store({
       state.commentNum = commentNum
       console.log(state.commentSettingModalActive, commentNum)
     },
-    userFeedSettingModalActivate: function (state) {
+    userFeedSettingModalActivate: function (state, payload=0) {
       state.userFeedSettingModalActive = !state.userFeedSettingModalActive
+      if (payload){
+        state.feedAuthor = payload
+      }
       console.log(state.userFeedSettingModalActive)
     },
     logoutModalActivate: function (state) {

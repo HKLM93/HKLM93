@@ -298,7 +298,7 @@ export default {
 
 		},
 		onUserFeedSetting:function(){
-			this.$store.commit('userFeedSettingModalActivate')
+			this.$store.commit('userFeedSettingModalActivate', this.feed.author)
 	
 		},
     likesList:function(){

@@ -43,7 +43,7 @@ export default {
   computed: {
     planet() {
 			const idx = this.feed.tags[0].no
-			if (idx){
+			if (idx && this.planetStyles[idx]){
 				return this.planetStyles[idx].img
 			}
 			return "space-station.png"

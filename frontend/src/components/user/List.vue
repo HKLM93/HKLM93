@@ -56,7 +56,14 @@ export default {
 			}
 		}
 	},
-	
+	created(){
+		if (!this.userId || this.userId == JSON.parse(window.sessionStorage.getItem('userInfo')).no){
+			document.title = `마이페이지 - ${this.tab}`
+		}
+		else {
+			document.title = `유저페이지 - ${this.tab}`
+		}
+	}
 }
 </script>
 
