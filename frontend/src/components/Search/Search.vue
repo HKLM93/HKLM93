@@ -6,7 +6,7 @@
         <div id="tabs">
           <p @mousedown="toggleTag" :class="onTag ? 'active': 'inactive'">이야기</p>
           <p @mousedown="toggleUser" :class="onUser ? 'active': 'inactive'">여행자</p>
-          <p @mousedown="togglePick" :class="onPick ? 'active': 'inactive'">보물상자</p>
+          <p @mousedown="togglePick" :class="onPick ? 'active': 'inactive'">찜 목록</p>
         </div>
       </div>
     </section>

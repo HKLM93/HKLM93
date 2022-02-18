@@ -18,7 +18,7 @@
       <div v-for="(forder, index) in forderlists" :key="index">
         <div id="userInfo">
           <p id="username">{{forder.name}}</p>
-          <button id="follow_cancel" @click="choiceForder(forder)">선택</button>
+          <button id="follow_cancel" @click="choiceForder(forder)">찜하기</button>
           <img id="trash"  @click="deleteForder(forder.no)" src="@/assets/images/icons/trash.png" style="margin-right:1rem" alt="">
         </div>
       </div>
