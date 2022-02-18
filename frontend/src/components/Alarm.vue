@@ -79,10 +79,12 @@ export default {
       this.$store.state.searchUserNo = el
       await this.$store.dispatch('userSelect', el)
       await this.$store.dispatch('userfollowdate', el)
+      this.$store.dispatch('readAlarm', this.$store.state.userInfo.no)
       // await this.$store.dispatch("searchUserFeed", this.$store.state.searchUserNo)
       this.$router.push({ path: `/user/${el}/feed` })
     },
     feed(el){
+      this.$store.dispatch('readAlarm', this.$store.state.userInfo.no)
       console.log(el)
        this.$router.push({name:'FeedDetail', params:{feedNo:el}})
        window.location.reload()

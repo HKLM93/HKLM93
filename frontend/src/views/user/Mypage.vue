@@ -58,7 +58,12 @@ export default {
   methods: {
     changeTab(tap){
       this.pageTab = tap
-      this.$router.push({ path: `${tap}` })
+      if (this.$route.path.includes('item')){
+        this.$router.push({ path: `/user/${this.userInfo.no}/${tap}` })
+      }
+      else {
+        this.$router.push({ path: `${tap}`})
+      }
     },
     showFollowerList: function () {
       this.$store.commit('mypagefollowerListActivate', this.followers)
