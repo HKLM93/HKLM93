@@ -9,7 +9,7 @@ import java.util.List;
 public interface FeedService {
     public List<FeedDto> list(int no);
     public List<Integer> listReturnNo(int no);
-    public List<FeedDto> myList(int no);
+    public List<FeedDto> myList(int no, int userNo);
     public List<Integer> myListReturnNo(int no);
     public FeedDto read(int no, int userNo);
     public int write(FeedDto feedDto);

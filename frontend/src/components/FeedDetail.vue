@@ -104,10 +104,10 @@ export default {
 	props:{
 		feedNo:Number,
 	},
-  computed: {
+    computed: {
     tmp: function () {
-      let name = this.feed.tags[0].name
-      let style = this.planetStyles.find(el => el.name === name) || {}
+      const idx = this.feed.tags[0].no
+      const style = this.planetStyles.find(el => el.id === idx) || {}
       return style
     }
   },

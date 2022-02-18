@@ -89,9 +89,21 @@ public class FeedController {
     }
 
     @GetMapping(value ="/feeds/my/{no}") // 내가 작성한 피드 목록
-    public ResponseEntity<List<FeedDto>> myList(@PathVariable String no) {
+    public ResponseEntity<List<FeedDto>> myList(@RequestHeader(value="at-jwt-access-token") String jwt,@PathVariable String no) {
         int userNo = Integer.parseInt(no);
-        List<FeedDto> feeds = feedService.myList(userNo);
+
+        String decode = jwtService.decode(jwt);
+        System.out.println("디코딩 내용 : " + decode);
+        String[] arr = decode.split("\\{|\\}| |,|\"|:");
+        String myNo = "";
+        for(int i = 0; i < arr.length; i++){
+            if (arr[i].equals("no")) {
+                myNo = arr[i + 2];
+                break;
+            }
+        }
+
+        List<FeedDto> feeds = feedService.myList(userNo, Integer.parseInt(myNo));
         if(feeds != null) {
             return new ResponseEntity<List<FeedDto>>(feeds, HttpStatus.OK);
         } else {

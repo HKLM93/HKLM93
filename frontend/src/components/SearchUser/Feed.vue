@@ -66,7 +66,7 @@ export default {
       ]
     }
   },
-   computed: {
+     computed: {
     tmp: function () {
       const idx = this.feed.tags[0].no
       const style = this.planetStyles.find(el => el.id === idx) || {}
