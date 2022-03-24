@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ person.username }}의 프로필 페이지</h1>
+  
+  {% with followings=person.followings.all followers=person.followers.all %}
+    <p class="lead" id="follow-count">
+      팔로잉 : {{ followings|length }} / 팔로워 : {{ followers|length }}
+    </p>
+    
+    {% if request.user != person %}
+      <form id="follow-form" data-user-id="{{ person.pk }}">
+        {% csrf_token %}
+        {% if request.user in followers %}
+          <button class="btn-secondary">언팔로우</button>
+        {% else %}
+          <button class="btn-primary">팔로우</button>
+        {% endif %}
+      </form>
+    {% endif %}
+  {% endwith %}
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const form = document.querySelector('#follow-form')
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+    if (form){
+      form.addEventListener('submit', function (event) {
+        event.preventDefault()
+
+        const userId = event.target.dataset.userId
+        axios ({
+          method: 'post',
+          url: `http://127.0.0.1:8000/accounts/${userId}/follow/`,
+          headers: {'X-CSRFToken': csrftoken}
+        })
+
+        .then(response => {
+          const followed = response.data.followed
+          const followbutton = document.querySelector('#follow-form > button')
+
+          if (followed) {
+            followbutton.innerText = "언팔로우"
+            followbutton.setAttribute('class', 'btn-secondary')
+          } else {
+            followbutton.innerText = "팔로우"
+            followbutton.setAttribute('class', 'btn-primary')
+          }
+
+          const follower_count = response.data.followers_count
+          const following_count = response.data.followings_count
+          const followcount = document.querySelector(`#follow-count`)
+          followcount.innerText = `팔로잉 : ${following_count} / 팔로워 : ${follower_count}`
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      })
+    }
+  </script>
+{% endblock %}

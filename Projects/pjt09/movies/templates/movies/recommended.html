@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>추천 영화</h1>
+<h2 id="movie_title">{{ movies.title }} </h2>
+<button id="recommend_button">인기 영화 추천 받기</button>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const movieBtn = document.querySelector('#recommend_button')
+  /* const API_URL = 'http://127.0.0.1:8000/movies/recommended/'
+
+  movieBtn.addEventListener('click', function(event) {
+    axios.get(API_URL)
+      .then(response => {
+        console.log(response.data)
+      })
+      .then(response =>{
+        console.log()
+      })
+  }) */
+
+  
+
+</script>
+{% endblock %}

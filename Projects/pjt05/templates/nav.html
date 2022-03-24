@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container-fluid d-flex justify-content-between">
+    <a class="navbar-brand" href="{% url 'movies:index' %}"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW92aWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cinema" width=100px"></a>
+    <h3 class="m-0" style="color:antiquewhite">MOVIE WORLD</h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'movies:index' %}">영화 목록</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'movies:create' %}">새로운 영화</a>
+        </li>
+    </div>
+  </div>
+</nav>

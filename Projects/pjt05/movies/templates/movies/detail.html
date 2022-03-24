@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <hr>
+  <h1 class="text-center">영화 상세 내용</h1>
+  <br>
+  <h3 class="text-center"># {{ movie.pk }}. {{ movie.title }} </h3>
+  <hr>
+  <div class="d-flex justify-content-center">
+    {% if movie.poster %}
+      <img src="{{ movie.poster.url }}" alt="{{ movie.poster }}" class="col-2 offset-1" style="width:300px; height:350px;">
+    {% else %}
+      <p>업로드된 포스터 없습니다.</p>
+    {% endif %}
+    <div class='col-5 offset-1'>
+      <h5>제목 : {{ movie.title }}</h5>
+      <hr>
+      <p>감독 : {{ movie.director }}</p>
+      <p>주연배우 : {{ movie.actor }}</p>
+      <p>시놉시스 : {{movie.overview }}</p>
+      <a href="{% url 'movies:update' movie.pk %}" class="btn btn-outline-primary">수정</a>
+      <form class="d-inline" action="{% url 'movies:delete' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger">삭제</button>
+      </form>
+      <a href="{% url 'movies:index' %}" class="btn btn-outline-secondary">뒤로가기</a>
+    </div>
+  </div>
+{% endblock content %}

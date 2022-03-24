@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ profile.username }}의 프로필 페이지</h1>
+  {% with followings=profile.followings.all followers=profile.followers.all %}
+    <div>
+      <div>팔로잉 수: {{ followers|length }}/ 팔로워 수 : {{ followings|length }}</div>
+    </div>
+    {% if user != person %}
+      <div>
+        <form action="{% url 'accounts:follow' profile.username %}" method="POST">
+          {% csrf_token %}
+          {% if user in followings %}
+            <input type="submit" value='언팔로우'>
+          {% else %}
+            <input type="submit" value='팔로우'>
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <hr>
+
+  <h2>{{ profile.username }}가 작성한 게시글</h2>
+  {% for review in profile.review_set.all %}
+    <div>{{ review.title }}</div>
+  {% empty %}
+    <p>아직 작성한 게시글이 없습니다../</p>
+  {% endfor %}
+
+  <hr>
+
+  <h2>{{ profile.username }}가 작성한 댓글</h2>
+  {% for comment in profile.comment_set.all %}
+    <div>{{ comment.content }}</div>
+  {% empty %}
+    <p>아직 작성한 댓글이 없습니다...</p>
+  {% endfor %}
+
+  <hr>
+
+  <h2>{{ profile.username }}가 좋아요를 누른 게시글</h2>
+  {% for review in profile.like_reviews.all %}
+    <div>{{ review.title }}</div>
+  {% empty %}
+    <p>좋아요한 게시글이 없습니다...</p>
+  {% endfor %}
+
+  <hr>
+
+  <a href="{% url 'community:index' %}">[back]</a>
+{% endblock content %}

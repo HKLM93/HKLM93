@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>리뷰 상세</h1>
+  <hr>
+  <p>제목: {{ review.title }}</p>
+  <p>영화제목: {{ review.movie_title }}</p>
+  <p>평점: {{ review.rank }}</p>
+  <p>리뷰: {{ review.content }}</p>
+  <p>작성시간: {{ review.created_at }}</p>
+  <p>수정시간 : {{ review.updated_at }}</p>
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'community:like' review.pk %}" method = "POST">
+      {% csrf_token %}
+      {% if user in review.like.all %}
+        <input type="submit" value="좋아요 취소"> {{ review.like.all | length }}
+      {% else %}
+        <input type="submit" value="좋아요"> {{ review.like.all | length }}
+      {% endif %}
+    </form>
+  {% endif %}
+  <hr>
+  <h4>댓글</h4>
+  
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'community:comments_create' review.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form }}
+      <input type="submit" value="댓글작성">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인해주세요.]</a>
+  {% endif %}
+  
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{ comment.user}}
+        {{ comment.content }}
+      </li>
+    {% endfor %}
+  </ul>
+  
+  <a href="{% url 'community:index' %}">[back]</a>
+{% endblock content %}
