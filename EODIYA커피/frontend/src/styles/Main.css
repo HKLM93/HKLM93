@@ -1,0 +1,116 @@
+
+
+*, body, html{
+    box-sizing: border-box;   
+    padding:0;
+    margin: 0;
+}
+body {
+    overflow-y: hidden;
+}
+.image-container{
+    width: 300px;
+    height: 300px;
+}
+.OutLine {
+    height: 100vh;
+    overflow-y: auto;
+}
+.m-15{
+    margin:15px;
+}
+/* 화면에서 스크롤바 안보이게 */
+.OutLine::-webkit-scrollbar {
+    display: none;
+}
+/* InLine 페이지마다 적용되있음*/
+.InLine{
+    height : 100vh;
+    width : 100vw;
+    display: flex;   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section{
+    font-size: 50px;
+    color: white;
+}
+.major1 {
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+.major {
+    font-size: 40px;
+    /* background-color: blanchedalmond; */
+    margin-bottom: 50px;
+}
+h3{
+    margin-top: 50px;
+    font-size: 25px;
+    font-family: 'BinggraeMelona';
+}
+
+/* .InLine:first-child{
+    background:radial-gradient(white, white, rgb(0, 176, 252));
+} */
+.InLineend{
+    height : 97vh;
+    width : 100vw;
+    display: flex;   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.innerSec{
+    width: 100vw;
+    height: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* background:linear-gradient(to left, white, rgb(0, 176, 252)); */
+}
+.innerSec2{
+    width: 100vw;
+    height: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* background:linear-gradient(to left, white, rgb(0, 176, 252)); */
+}
+.actionsSpecial{
+    margin-top: 40px;
+}
+.imgSec{
+    height: 250px;
+    width: 350px;
+}
+.imgSec2{
+    height: 400px;
+    width: 800px;
+}
+.bigfont{
+    font-size: 25px;
+}
+.fixwidth{
+    width: 60%;
+    margin: auto;
+}
+.bigbtn{
+    width: 180px;
+    border-radius: 18px;
+    height: 100px;
+    font-size: 35px;
+}
